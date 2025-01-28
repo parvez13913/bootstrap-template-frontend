@@ -1,9 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { Check, Copy } from "lucide-react";
+import { useRef, useState } from "react";
 
 export default function TabsDemo() {
   const [activeTab, setActiveTab] = useState("html");
+  const [isCopied, setIsCopied] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const htmlCode = `<div class="image image-overlay"></div>`;
+  const cssCode = `body {
+  > section,
+  > footer {
+    position: relative;
+    margin: 0 auto;
+    padding: 6.25rem 0;
+    overflow: hidden;
+  }
+}`;
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setIsCopied(true);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setIsCopied(false), 2000);
+    });
+  };
 
   return (
     <div className="mt-3">
@@ -40,29 +62,54 @@ export default function TabsDemo() {
 
         {/* Tab Content */}
         <div className="p-4">
+          {/* HTML Code Block */}
           <div
             role="tabpanel"
-            className={activeTab === "html" ? "block" : "hidden"}
+            className={`relative ${activeTab === "html" ? "block" : "hidden"}`}
           >
-            <pre className="rounded bg-gray-50 p-4">
-              <code className="text-sm text-gray-800">{`<div class="image image-overlay"></div>`}</code>
-            </pre>
+            <div className="relative group">
+              <pre className="rounded bg-gray-50 p-4">
+                <code className="text-sm text-gray-800">{htmlCode}</code>
+              </pre>
+              <button
+                onClick={() => copyToClipboard(htmlCode)}
+                className={`absolute top-2 right-2 p-2 bg-white rounded-md shadow-sm transition-opacity duration-200 group-hover:opacity-100 ${
+                  isCopied ? "opacity-100" : "opacity-0"
+                }`}
+                aria-label="Copy code"
+              >
+                {isCopied ? (
+                  <Check className="h-5 w-5 text-green-500" />
+                ) : (
+                  <Copy className="h-5 w-5 text-gray-500" />
+                )}
+              </button>
+            </div>
           </div>
+
+          {/* CSS Code Block */}
           <div
             role="tabpanel"
-            className={activeTab === "css" ? "block" : "hidden"}
+            className={`relative ${activeTab === "css" ? "block" : "hidden"}`}
           >
-            <pre className="rounded bg-gray-50 p-4">
-              <code className="text-sm text-gray-800">{`body {
-  > section,
-  > footer {
-    position: relative;
-    margin: 0 auto;
-    padding: 6.25rem 0;
-    overflow: hidden;
-  }
-}`}</code>
-            </pre>
+            <div className="relative group">
+              <pre className="rounded bg-gray-50 p-4">
+                <code className="text-sm text-gray-800">{cssCode}</code>
+              </pre>
+              <button
+                onClick={() => copyToClipboard(cssCode)}
+                className={`absolute top-2 right-2 p-2 bg-white rounded-md shadow-sm transition-opacity duration-200 group-hover:opacity-100 ${
+                  isCopied ? "opacity-100" : "opacity-0"
+                }`}
+                aria-label="Copy code"
+              >
+                {isCopied ? (
+                  <Check className="h-5 w-5 text-green-500" />
+                ) : (
+                  <Copy className="h-5 w-5 text-gray-500" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
