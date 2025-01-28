@@ -1,3 +1,4 @@
+import DocumentationLanding from "./ui/documentation-landing/documentation-landing";
 import Hero from "./ui/hero/hero";
 import TypographyShowcase from "./ui/typography/typography-showcase";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <div className="mt-24 lg:mt-80">
         <TypographyShowcase />
       </div>
+      <DocumentationLanding />
     </main>
   );
 }
