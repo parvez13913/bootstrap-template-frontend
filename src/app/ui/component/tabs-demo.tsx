@@ -1,6 +1,5 @@
 "use client";
 
-import { Check, Copy } from "lucide-react";
 import { useRef, useState } from "react";
 
 export default function TabsDemo() {
@@ -73,15 +72,15 @@ export default function TabsDemo() {
               </pre>
               <button
                 onClick={() => copyToClipboard(htmlCode)}
-                className={`absolute top-2 right-2 p-2 bg-white rounded-md shadow-sm transition-opacity duration-200 group-hover:opacity-100 ${
+                className={`absolute top-2 right-2 p-2 bg-blue-600 rounded-md shadow-sm transition-opacity duration-200 group-hover:opacity-100 ${
                   isCopied ? "opacity-100" : "opacity-0"
                 }`}
                 aria-label="Copy code"
               >
                 {isCopied ? (
-                  <Check className="h-5 w-5 text-green-500" />
+                  <button className="text-[#ffff]">COPIED!</button>
                 ) : (
-                  <Copy className="h-5 w-5 text-gray-500" />
+                  <button className="text-[#ffff]">COPY</button>
                 )}
               </button>
             </div>
@@ -98,15 +97,15 @@ export default function TabsDemo() {
               </pre>
               <button
                 onClick={() => copyToClipboard(cssCode)}
-                className={`absolute top-2 right-2 p-2 bg-white rounded-md shadow-sm transition-opacity duration-200 group-hover:opacity-100 ${
+                className={`absolute top-2 right-2 p-2 bg-blue-600 rounded-md shadow-sm transition-opacity duration-200 group-hover:opacity-100 ${
                   isCopied ? "opacity-100" : "opacity-0"
                 }`}
                 aria-label="Copy code"
               >
                 {isCopied ? (
-                  <Check className="h-5 w-5 text-green-500" />
+                  <button className="text-[#ffff]">COPIED!</button>
                 ) : (
-                  <Copy className="h-5 w-5 text-gray-500" />
+                  <button className="text-[#ffff]">COPY</button>
                 )}
               </button>
             </div>

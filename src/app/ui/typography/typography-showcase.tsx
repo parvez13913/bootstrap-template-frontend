@@ -5,7 +5,7 @@ import TabsDemo from "../component/tabs-demo";
 
 export default function TypographyShowcase() {
   return (
-    <section className="mx-auto px-8 pt-16 bg-gray-200">
+    <section className="mx-auto px-8 pt-16 bg-[#f8f8f8]">
       <div className="max-w-3xl mx-auto text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-normal mb-4">
           <span className="text-gray-900">Highlight</span>{" "}

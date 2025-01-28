@@ -35,11 +35,11 @@ export default function Footer() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-12">
-        <div className="container mx-auto px-4 mt-40">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+      <footer className="bg-[#151515] text-white py-12">
+        <div className="mx-auto mt-40 max-w-6xl">
+          <div className="flex  justify-between space-x-10">
             {/* Logo */}
-            <div className="md:col-span-2">
+            <div>
               <Link href="/" className="flex items-center">
                 <Image
                   src="/logo-white.svg"
@@ -51,7 +51,7 @@ export default function Footer() {
             </div>
 
             {/* Content */}
-            <div className="md:col-span-6">
+            <div className="">
               <p className="mb-6 text-gray-400">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
