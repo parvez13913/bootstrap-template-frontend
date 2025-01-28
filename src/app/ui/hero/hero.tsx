@@ -1,4 +1,4 @@
-import DocumentationCarousel from "../component/navbar/documentation-carousel";
+import DocumentationCarousel from "../component/documentation-carousel";
 
 export default function Hero() {
   return (
@@ -14,7 +14,7 @@ export default function Hero() {
           </button>
         </div>
       </div>
-      <div className="absolute -bottom-[30%] lg:-bottom-[70%] md:-bottom-[80%]">
+      <div className="absolute lg:-bottom-[70%] md:-bottom-[80%]">
         <DocumentationCarousel />
       </div>
     </div>
