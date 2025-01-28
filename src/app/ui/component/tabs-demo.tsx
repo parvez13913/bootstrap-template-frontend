@@ -29,7 +29,7 @@ export default function TabsDemo() {
 
   return (
     <div className="mt-3">
-      <div className="rounded-lg border shadow-sm">
+      <div className="rounded-sm border shadow-md bg-white">
         {/* Tab Header */}
         <div className="border-b bg-white px-4 pb-0">
           <div className="flex gap-4" role="tablist">

@@ -5,7 +5,7 @@ import TabsDemo from "../component/tabs-demo";
 
 export default function TypographyShowcase() {
   return (
-    <section className="mx-auto px-8 pt-16">
+    <section className="mx-auto px-8 pt-16 bg-gray-200">
       <div className="max-w-3xl mx-auto text-center mb-12">
         <h2 className="text-4xl md:text-5xl font-normal mb-4">
           <span className="text-gray-900">Highlight</span>{" "}
@@ -38,7 +38,7 @@ export default function TypographyShowcase() {
 
           {/* Font Preview */}
           <div className="flex flex-col items-center gap-6 sm:flex-row">
-            <div className="relative border border-gray-200 rounded-lg p-8">
+            <div className="relative border border-white bg-white rounded-sm shadow-md p-8">
               <div className="absolute top-4 right-4">
                 <span className="bg-green-500 text-white text-xs font-medium px-2 py-1 rounded">
                   NEW
@@ -47,7 +47,7 @@ export default function TypographyShowcase() {
               <div className="mb-4 text-sm text-gray-600">Open Sans</div>
               <div className="text-[72px] leading-none">Ab</div>
             </div>
-            <div className="border border-gray-200 rounded-lg p-8">
+            <div className="border border-white bg-white rounded-sm shadow-md p-8">
               <div className="mb-4 text-sm text-gray-600">Open Sans Bold</div>
               <div className="text-[72px] leading-none font-bold">Ab</div>
             </div>

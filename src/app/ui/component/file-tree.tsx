@@ -42,14 +42,12 @@ const treeData: TreeItem[] = [
 
 export default function FileTree() {
   return (
-    <div className="">
-      <div className="rounded-lg border p-4 shadow-sm">
-        <ul className="space-y-1">
-          {treeData.map((item, index) => (
-            <TreeNode key={index} item={item} />
-          ))}
-        </ul>
-      </div>
+    <div className="rounded-sm bg-white border p-4 shadow-md">
+      <ul className="space-y-1">
+        {treeData.map((item, index) => (
+          <TreeNode key={index} item={item} />
+        ))}
+      </ul>
     </div>
   );
 }
