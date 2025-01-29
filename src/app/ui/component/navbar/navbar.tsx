@@ -66,16 +66,17 @@ export default function Navbar() {
                   setOpenDropdown={setOpenDropdown}
                 />
                 <NavDropdown
-                  label="Pages"
+                  label="Products"
                   items={[
-                    { href: "/contact", label: "Contact" },
-                    { href: "/pages/changelog", label: "Changelog" },
-                    { href: "/pages/faq", label: "FAQ" },
-                    { href: "/pages/pricing", label: "Pricing" },
-                    { href: "/pages/terms", label: "Terms" },
-                    { href: "/pages/404", label: "404" },
+                    {
+                      href: "/interview-question",
+                      label: "Interview Question",
+                    },
+                    { href: "job-match", label: "Job Match Summary" },
+                    { href: "interview-lists", label: "Interview Lists" },
+                    { href: "candidate-lists", label: "Candidate Lists" },
                   ]}
-                  isOpen={openDropdown === "Pages"}
+                  isOpen={openDropdown === "Products"}
                   setOpenDropdown={setOpenDropdown}
                 />
               </ul>
@@ -85,8 +86,8 @@ export default function Navbar() {
           {/* Right Navigation Items */}
           <div className="hidden lg:flex lg:items-center lg:space-x-8 text-sm">
             <ul className="flex flex-row items-center space-x-4 p-4 lg:p-0">
-              <NavItem href="/documentation" label="Docs" />
-              <NavItem href="/documentation/changelog" label="Changelog" />
+              <NavItem href="/contact" label="Contact Us" />
+              <NavItem href="about" label="About Us" />
             </ul>
           </div>
         </div>

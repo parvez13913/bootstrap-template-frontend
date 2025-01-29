@@ -28,7 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`$${openSans.variable} ${robotoMono.variable}`}>
       <body>
-        <Navbar />
+        <div className="sticky top-0 z-50">
+          <Navbar />
+        </div>
         {children}
       </body>
     </html>

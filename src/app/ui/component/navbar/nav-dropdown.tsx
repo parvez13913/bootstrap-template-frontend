@@ -17,11 +17,12 @@ export const NavDropdown = ({
     <li className="relative dropdown">
       {/* Dropdown Toggle Button */}
       <button
-        className="text-white hover:text-gray-300 focus:outline-none flex items-center"
+        className="text-white hover:text-white/90 focus:outline-none flex items-center transition-colors group"
         onClick={() => setOpenDropdown(isOpen ? null : label)}
       >
         {label}
         <ChevronDown />
+        <span className="absolute inset-x-0 -top-5 h-[1px] bg-white scale-x-0 transition-transform group-hover:scale-x-100" />
       </button>
 
       {/* Dropdown Menu */}

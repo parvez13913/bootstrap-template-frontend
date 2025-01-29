@@ -1,4 +1,11 @@
+"use client";
+
 export default function ContactForm() {
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("Form submitted!");
+  };
+
   return (
     <main className="min-h-screen bg-[#f8f8f8] px-4 py-16 md:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
@@ -6,7 +13,7 @@ export default function ContactForm() {
           Get in touch. <span className="font-normal">It's free.</span>
         </h1>
 
-        <form className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="space-y-2">
               <label
