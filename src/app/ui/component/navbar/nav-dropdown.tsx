@@ -1,4 +1,5 @@
 "use client";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -33,21 +34,40 @@ export const NavDropdown = ({
       </button>
 
       {/* Dropdown Menu */}
-      {isOpen && (
-        <ul className="absolute left-0 mt-2 w-48 bg-[#ffff] rounded-sm shadow-lg z-10">
-          {items.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                onClick={() => setOpenDropdown(null)}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{
+              duration: 0.2,
+              ease: "easeOut",
+            }}
+            className="absolute left-0 mt-2 w-48 bg-white rounded-sm shadow-lg z-10"
+          >
+            {items.map((item) => (
+              <motion.li
+                key={item.href}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.2,
+                  delay: 0.1,
+                }}
               >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+                <Link
+                  href={item.href}
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                  onClick={() => setOpenDropdown(null)}
+                >
+                  {item.label}
+                </Link>
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </li>
   );
 };
