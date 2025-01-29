@@ -1,8 +1,8 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { TiArrowSortedDown } from "react-icons/ti";
 
 export const NavDropdown = ({
   label,
@@ -25,7 +25,7 @@ export const NavDropdown = ({
         onClick={() => setOpenDropdown(isOpen ? null : label)}
       >
         {label}
-        <ChevronDown />
+        <TiArrowSortedDown />
         <span
           className={`absolute inset-x-0 -top-5 h-[1px] bg-white transition-transform ${
             isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"

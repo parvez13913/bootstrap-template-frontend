@@ -53,14 +53,14 @@ export default function Navbar() {
               <ul className="flex flex-col lg:flex-row lg:items-center space-y-2 lg:space-y-0 lg:space-x-4 p-4 lg:p-0">
                 <NavItem href="/" label="Home" />
                 <NavDropdown
-                  label="Documentation"
+                  label="Profile"
                   items={[
-                    { href: "/docs/layout-1", label: "Layout 1" },
+                    { href: "/my-candidate", label: "My Candidate" },
                     { href: "/docs/layout-2", label: "Layout 2" },
                     { href: "/docs/layout-3", label: "Layout 3" },
                     { href: "/docs/layout-4", label: "Layout 4" },
                   ]}
-                  isOpen={openDropdown === "Documentation"}
+                  isOpen={openDropdown === "Profile"}
                   setOpenDropdown={setOpenDropdown}
                 />
                 <NavDropdown
@@ -101,6 +101,7 @@ export default function Navbar() {
             <ul className="flex flex-row items-center space-x-4 p-4 lg:p-0">
               <NavItem href="/contact" label="Contact Us" />
               <NavItem href="/about" label="About Us" />
+              <NavItem href="/login" label="Login" />
             </ul>
           </div>
         </div>
