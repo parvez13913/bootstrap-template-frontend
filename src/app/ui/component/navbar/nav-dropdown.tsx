@@ -24,8 +24,10 @@ export const NavDropdown = ({
         className="text-white hover:text-white/90 focus:outline-none flex items-center transition-colors group"
         onClick={() => setOpenDropdown(isOpen ? null : label)}
       >
-        {label}
-        <TiArrowSortedDown />
+        <h6 className="flex space-x-1 items-center">
+          <p>{label}</p>
+          <TiArrowSortedDown className="h-3 w-3" />
+        </h6>
         <span
           className={`absolute inset-x-0 -top-5 h-[1px] bg-white transition-transform ${
             isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
