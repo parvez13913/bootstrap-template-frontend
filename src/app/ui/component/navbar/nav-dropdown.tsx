@@ -1,6 +1,7 @@
 "use client";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const NavDropdown = ({
   label,
@@ -13,6 +14,8 @@ export const NavDropdown = ({
   isOpen: boolean;
   setOpenDropdown: (dropdown: string | null) => void;
 }) => {
+  const pathname = usePathname();
+  const isActive = items.some((item) => pathname === item.href);
   return (
     <li className="relative dropdown">
       {/* Dropdown Toggle Button */}
@@ -22,7 +25,11 @@ export const NavDropdown = ({
       >
         {label}
         <ChevronDown />
-        <span className="absolute inset-x-0 -top-5 h-[1px] bg-white scale-x-0 transition-transform group-hover:scale-x-100" />
+        <span
+          className={`absolute inset-x-0 -top-5 h-[1px] bg-white transition-transform ${
+            isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+          }`}
+        />
       </button>
 
       {/* Dropdown Menu */}
