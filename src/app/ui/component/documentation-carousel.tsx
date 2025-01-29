@@ -32,11 +32,8 @@ export default function DocumentationCarousel() {
           {/* Search Interface Slide */}
           {images.map((src, index) => (
             <div className="relative min-w-0 flex-[0_0_50%]" key={index}>
-              <div className="relative mx-4 overflow-hidden rounded-lg shadow-lg">
-                <Link
-                  href="#"
-                  className="h-[400px] transition-transform duration-300 hover:scale-105 shadow-lg"
-                >
+              <div className="relative mx-4 overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:-translate-y-4">
+                <Link href="#" className="h-[400px] shadow-lg">
                   <Image
                     src={src || "/layout-1.png"}
                     alt="layout-1"
