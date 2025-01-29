@@ -87,7 +87,7 @@ export default function Navbar() {
           <div className="hidden lg:flex lg:items-center lg:space-x-8 text-sm">
             <ul className="flex flex-row items-center space-x-4 p-4 lg:p-0">
               <NavItem href="/contact" label="Contact Us" />
-              <NavItem href="about" label="About Us" />
+              <NavItem href="/about" label="About Us" />
             </ul>
           </div>
         </div>
