@@ -78,9 +78,9 @@ export default function TabsDemo() {
                 aria-label="Copy code"
               >
                 {isCopied ? (
-                  <button className="text-[#ffff]">COPIED!</button>
+                  <span className="text-[#ffff]">COPIED!</span>
                 ) : (
-                  <button className="text-[#ffff]">COPY</button>
+                  <span className="text-[#ffff]">COPY</span>
                 )}
               </button>
             </div>
@@ -103,9 +103,9 @@ export default function TabsDemo() {
                 aria-label="Copy code"
               >
                 {isCopied ? (
-                  <button className="text-[#ffff]">COPIED!</button>
+                  <span className="text-[#ffff]">COPIED!</span>
                 ) : (
-                  <button className="text-[#ffff]">COPY</button>
+                  <span className="text-[#ffff]">COPY</span>
                 )}
               </button>
             </div>

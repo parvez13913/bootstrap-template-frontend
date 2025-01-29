@@ -1,116 +1,94 @@
 "use client";
 
-import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { NavDropdown } from "./nav-dropdown";
+import { NavItem } from "./nav-item";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!(event.target as HTMLElement).closest(".dropdown")) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
 
   return (
     <nav className="bg-[#0439a4] text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo and Mobile Menu Button */}
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/logo-white.svg"
-                  width={50}
-                  height={50}
-                  alt="logo"
-                />
-              </Link>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="ml-2 -mr-2 flex items-center lg:hidden">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-blue-800 focus:outline-none"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                {isOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-8">
-            <Link href="/" className="text-white hover:text-blue-200">
-              HOME
+          <div className="flex items-center space-x-8">
+            {/* Logo */}
+            <Link href="/" className="flex items-center">
+              <Image src="/logo-white.svg" width={40} height={40} alt="logo" />
             </Link>
-            <div className="relative group">
-              <button className="flex items-center text-white hover:text-blue-200">
-                DOCUMENTATION
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-            </div>
-            <div className="relative group">
-              <button className="flex items-center text-white hover:text-blue-200">
-                HELP CENTER
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-            </div>
-            <div className="relative group">
-              <button className="flex items-center text-white hover:text-blue-200">
-                PAGES
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
+
+            {/* Desktop Navigation */}
+            <div
+              className={`lg:flex ${
+                isOpen ? "block" : "hidden"
+              } absolute lg:relative top-full left-0 right-0 bg-gray-800 lg:bg-transparent`}
+            >
+              <ul className="flex flex-col lg:flex-row lg:items-center space-y-2 lg:space-y-0 lg:space-x-4 p-4 lg:p-0">
+                <NavItem href="/" label="Home" />
+                <NavDropdown
+                  label="Documentation"
+                  items={[
+                    { href: "/docs/layout-1", label: "Layout 1" },
+                    { href: "/docs/layout-2", label: "Layout 2" },
+                    { href: "/docs/layout-3", label: "Layout 3" },
+                    { href: "/docs/layout-4", label: "Layout 4" },
+                  ]}
+                  isOpen={openDropdown === "Documentation"}
+                  setOpenDropdown={setOpenDropdown}
+                />
+                <NavDropdown
+                  label="Help Center"
+                  items={[
+                    { href: "/help/homepage-1", label: "Homepage 1" },
+                    { href: "/help/homepage-2", label: "Homepage 2" },
+                    { href: "/help/homepage-3", label: "Homepage 3" },
+                    { href: "/help/category", label: "Category" },
+                    { href: "/help/category-inner", label: "Category Inner" },
+                    { href: "/help/article-1", label: "Article 1" },
+                    { href: "/help/article-2", label: "Article 2" },
+                    { href: "/help/tutorial", label: "Tutorial" },
+                  ]}
+                  isOpen={openDropdown === "Help Center"}
+                  setOpenDropdown={setOpenDropdown}
+                />
+                <NavDropdown
+                  label="Pages"
+                  items={[
+                    { href: "/contact", label: "Contact" },
+                    { href: "/pages/changelog", label: "Changelog" },
+                    { href: "/pages/faq", label: "FAQ" },
+                    { href: "/pages/pricing", label: "Pricing" },
+                    { href: "/pages/terms", label: "Terms" },
+                    { href: "/pages/404", label: "404" },
+                  ]}
+                  isOpen={openDropdown === "Pages"}
+                  setOpenDropdown={setOpenDropdown}
+                />
+              </ul>
             </div>
           </div>
 
           {/* Right Navigation Items */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-8">
-            <Link href="/docs" className="text-white hover:text-blue-200">
-              DOCS
-            </Link>
-            <Link href="/changelog" className="text-white hover:text-blue-200">
-              CHANGELOG
-            </Link>
+          <div className="hidden lg:flex lg:items-center lg:space-x-8 text-sm">
+            <ul className="flex flex-row items-center space-x-4 p-4 lg:p-0">
+              <NavItem href="/documentation" label="Docs" />
+              <NavItem href="/documentation/changelog" label="Changelog" />
+            </ul>
           </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div className={`${isOpen ? "block" : "hidden"} lg:hidden`}>
-        <div className="space-y-1 px-4 pb-3 pt-2">
-          <Link
-            href="/"
-            className="block rounded-md px-3 py-2 text-white hover:bg-blue-800"
-          >
-            HOME
-          </Link>
-          <button className="flex w-full items-center rounded-md px-3 py-2 text-white hover:bg-blue-800">
-            DOCUMENTATION
-            <ChevronDown className="ml-1 h-4 w-4" />
-          </button>
-          <button className="flex w-full items-center rounded-md px-3 py-2 text-white hover:bg-blue-800">
-            HELP CENTER
-            <ChevronDown className="ml-1 h-4 w-4" />
-          </button>
-          <button className="flex w-full items-center rounded-md px-3 py-2 text-white hover:bg-blue-800">
-            PAGES
-            <ChevronDown className="ml-1 h-4 w-4" />
-          </button>
-          <Link
-            href="/docs"
-            className="block rounded-md px-3 py-2 text-white hover:bg-blue-800"
-          >
-            DOCS
-          </Link>
-          <Link
-            href="/changelog"
-            className="block rounded-md px-3 py-2 text-white hover:bg-blue-800"
-          >
-            CHANGELOG
-          </Link>
         </div>
       </div>
     </nav>
