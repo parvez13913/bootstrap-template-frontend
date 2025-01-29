@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, ShoppingCart } from "lucide-react";
+import { ArrowRight, ChevronDown, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -18,17 +18,21 @@ export default function Footer() {
             <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-10">
               <ShoppingCart className="w-40 h-40 text-white" />
             </div>
-            <div className="relative z-10 text-white">
+            <div className="relative z-10 text-white px-8">
               <h2 className="text-3xl md:text-4xl font-light mb-4">
                 Next Level of <strong>Documentation</strong>
               </h2>
-              <p className="text-xl opacity-90">
+              <h2 className="text-xl opacity-90 flex items-center">
                 Purchase Guidebook now, and make documenting your project piece
                 of cake.{" "}
-                <Link href="#" className="underline hover:no-underline ml-2">
-                  Buy Now
+                <Link
+                  href="#"
+                  className="group ml-2 text-sm flex items-center space-x-2 hover:text-gray-200 transition-all ease-in-out"
+                >
+                  <p>Buy Now</p>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 ease-in-out group-hover:translate-x-2" />
                 </Link>
-              </p>
+              </h2>
             </div>
           </div>
         </div>
@@ -52,17 +56,18 @@ export default function Footer() {
 
             {/* Content */}
             <div className="">
-              <p className="mb-6 text-gray-400">
+              <p className="mb-6 text-gray-400 text-lg">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                eiusmod <br />
+                tempor incididunt ut labore et dolore magna aliqua.
               </p>
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <ul className="space-y-2">
+                  <ul className="space-y-3 text-lg">
                     <li>
                       <Link
                         href="#"
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="text-white hover:underline underline-offset-8 decoration-2 transition-all"
                       >
                         Product Help
                       </Link>
@@ -70,7 +75,7 @@ export default function Footer() {
                     <li>
                       <Link
                         href="#"
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="text-white hover:underline underline-offset-8 decoration-2 transition-all"
                       >
                         Training Videos
                       </Link>
@@ -78,7 +83,7 @@ export default function Footer() {
                     <li>
                       <Link
                         href="#"
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="text-white hover:underline underline-offset-8 decoration-2 transition-all"
                       >
                         Integrations
                       </Link>
@@ -90,7 +95,7 @@ export default function Footer() {
                     <li>
                       <Link
                         href="#"
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="text-white hover:underline underline-offset-8 decoration-2 transition-all"
                       >
                         REST API
                       </Link>
@@ -98,7 +103,7 @@ export default function Footer() {
                     <li>
                       <Link
                         href="#"
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="text-white hover:underline underline-offset-8 decoration-2 transition-all"
                       >
                         Corporate
                       </Link>
