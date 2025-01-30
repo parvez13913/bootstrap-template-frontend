@@ -9,11 +9,13 @@ export const NavDropdown = ({
   items,
   isOpen,
   setOpenDropdown,
+  onClick,
 }: {
   label: string;
   items: { href: string; label: string }[];
   isOpen: boolean;
   setOpenDropdown: (dropdown: string | null) => void;
+  onClick?: () => void;
 }) => {
   const pathname = usePathname();
   const isActive = items.some((item) => pathname === item.href);
@@ -29,7 +31,7 @@ export const NavDropdown = ({
           <TiArrowSortedDown className="h-3 w-3" />
         </h6>
         <span
-          className={`absolute inset-x-0 -top-5 h-[1px] bg-white transition-transform ${
+          className={`absolute inset-x-0 -top-5 h-[1px] bg-white transition-transform hidden lg:block ${
             isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
           }`}
         />
@@ -46,7 +48,7 @@ export const NavDropdown = ({
               duration: 0.2,
               ease: "easeOut",
             }}
-            className="absolute left-0 mt-2 w-48 bg-white rounded-sm shadow-lg z-10"
+            className="absolute left-0 mt-2 w-44 bg-white rounded-sm shadow-lg z-10"
           >
             {items.map((item) => (
               <motion.li
@@ -61,7 +63,10 @@ export const NavDropdown = ({
                 <Link
                   href={item.href}
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-                  onClick={() => setOpenDropdown(null)}
+                  onClick={() => {
+                    setOpenDropdown(null); // Close dropdown
+                    onClick?.();
+                  }}
                 >
                   {item.label}
                 </Link>

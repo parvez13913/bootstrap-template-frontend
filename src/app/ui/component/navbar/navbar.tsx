@@ -53,13 +53,6 @@ export default function Navbar() {
               <ul className="flex flex-col lg:flex-row lg:items-center space-y-2 lg:space-y-0 lg:space-x-4 p-4 lg:p-0">
                 <NavItem href="/" label="Home" />
                 <NavDropdown
-                  label="Profile"
-                  items={[{ href: "/my-candidate", label: "My Candidate" }]}
-                  isOpen={openDropdown === "Profile"}
-                  setOpenDropdown={setOpenDropdown}
-                />
-
-                <NavDropdown
                   label="Products"
                   items={[
                     {
@@ -73,6 +66,8 @@ export default function Navbar() {
                   isOpen={openDropdown === "Products"}
                   setOpenDropdown={setOpenDropdown}
                 />
+                <NavItem href="/contact" label="Contact Us" />
+                <NavItem href="/about" label="About Us" />
               </ul>
             </div>
           </div>
@@ -80,9 +75,13 @@ export default function Navbar() {
           {/* Right Navigation Items */}
           <div className="hidden lg:flex lg:items-center lg:space-x-8 text-sm">
             <ul className="flex flex-row items-center space-x-4 p-4 lg:p-0">
-              <NavItem href="/contact" label="Contact Us" />
-              <NavItem href="/about" label="About Us" />
               <NavItem href="/login" label="Login" />
+              <NavDropdown
+                label="Profile"
+                items={[{ href: "/my-candidate", label: "My Candidate" }]}
+                isOpen={openDropdown === "Profile"}
+                setOpenDropdown={setOpenDropdown}
+              />
             </ul>
           </div>
         </div>
@@ -107,7 +106,11 @@ export default function Navbar() {
               >
                 <div className="h-full overflow-y-auto px-4 py-6">
                   <ul className="flex flex-col space-y-4">
-                    <NavItem href="/" label="Home" />
+                    <NavItem
+                      href="/"
+                      label="Home"
+                      onClick={() => setIsOpen(false)}
+                    />
                     <NavDropdown
                       label="Profile"
                       items={[{ href: "/my-candidate", label: "My Candidate" }]}
@@ -127,10 +130,19 @@ export default function Navbar() {
                       ]}
                       isOpen={openDropdown === "Products"}
                       setOpenDropdown={setOpenDropdown}
+                      onClick={() => setIsOpen(false)}
                     />
                     <div className="lg:hidden pt-4 border-t border-white/10">
-                      <NavItem href="/contact" label="Contact Us" />
-                      <NavItem href="/about" label="About Us" />
+                      <NavItem
+                        href="/contact"
+                        label="Contact Us"
+                        onClick={() => setIsOpen(false)}
+                      />
+                      <NavItem
+                        href="/about"
+                        label="About Us"
+                        onClick={() => setIsOpen(false)}
+                      />
                     </div>
                   </ul>
                 </div>
