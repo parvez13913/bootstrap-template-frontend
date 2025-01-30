@@ -54,30 +54,11 @@ export default function Navbar() {
                 <NavItem href="/" label="Home" />
                 <NavDropdown
                   label="Profile"
-                  items={[
-                    { href: "/my-candidate", label: "My Candidate" },
-                    { href: "/docs/layout-2", label: "Layout 2" },
-                    { href: "/docs/layout-3", label: "Layout 3" },
-                    { href: "/docs/layout-4", label: "Layout 4" },
-                  ]}
+                  items={[{ href: "/my-candidate", label: "My Candidate" }]}
                   isOpen={openDropdown === "Profile"}
                   setOpenDropdown={setOpenDropdown}
                 />
-                <NavDropdown
-                  label="Help Center"
-                  items={[
-                    { href: "/help/homepage-1", label: "Homepage 1" },
-                    { href: "/help/homepage-2", label: "Homepage 2" },
-                    { href: "/help/homepage-3", label: "Homepage 3" },
-                    { href: "/help/category", label: "Category" },
-                    { href: "/help/category-inner", label: "Category Inner" },
-                    { href: "/help/article-1", label: "Article 1" },
-                    { href: "/help/article-2", label: "Article 2" },
-                    { href: "/help/tutorial", label: "Tutorial" },
-                  ]}
-                  isOpen={openDropdown === "Help Center"}
-                  setOpenDropdown={setOpenDropdown}
-                />
+
                 <NavDropdown
                   label="Products"
                   items={[
@@ -85,9 +66,9 @@ export default function Navbar() {
                       href: "/interview-question",
                       label: "Interview Question",
                     },
-                    { href: "job-match", label: "Job Match Summary" },
-                    { href: "interview-lists", label: "Interview Lists" },
-                    { href: "candidate-lists", label: "Candidate Lists" },
+                    { href: "/job-match", label: "Job Match Summary" },
+                    { href: "/interview-lists", label: "Interview Lists" },
+                    { href: "/candidate-lists", label: "Candidate Lists" },
                   ]}
                   isOpen={openDropdown === "Products"}
                   setOpenDropdown={setOpenDropdown}
